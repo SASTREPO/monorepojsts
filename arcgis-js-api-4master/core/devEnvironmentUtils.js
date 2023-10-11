@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";function c(t){return t=t||globalThis.location.hostname,r.some((c=>{var e;return null!=(null==(e=t)?void 0:e.match(c))}))}function e(t,c){return t&&(c=c||globalThis.location.hostname)?null!=c.match(o)||null!=c.match(i)?t.replace("static.arcgis.com","staticdev.arcgis.com"):null!=c.match(n)||null!=c.match(l)?t.replace("static.arcgis.com","staticqa.arcgis.com"):t:t}function a(t){t=t||globalThis.location.hostname;return[/^zrh-.+?\.esri\.com$/].concat(r).some((c=>{var e;return null!=(null==(e=t)?void 0:e.match(c))}))}const o=/^devext.arcgis.com$/,n=/^qaext.arcgis.com$/,i=/^[\w-]*\.mapsdevext.arcgis.com$/,l=/^[\w-]*\.mapsqa.arcgis.com$/,r=[/^([\w-]*\.)?[\w-]*\.zrh-dev-local.esri.com$/,o,n,/^jsapps.esri.com$/,i,l];t.adjustStaticAGOUrl=e,t.isDevEnvironment=c,t.isTelemetryDevEnvironment=a,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

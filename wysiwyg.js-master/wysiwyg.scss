@@ -1,0 +1,320 @@
+/* Config */
+$wysiwyg-duration:          .2s !default;
+$wysiwyg-delay:             .1s !default;
+$wysiwyg-border-color:      #ddd !default;
+$wysiwyg-border-radius:     .2rem !default;
+$wysiwyg-toolbar-color:     #999 !default;
+$wysiwyg-highlight-color:   HighlightText !default;
+$wysiwyg-highlight-back:    Highlight !default;
+$wysiwyg-padding-vert:      .3rem !default;
+$wysiwyg-padding-horiz:     .5rem !default;
+
+/* CSS */
+.wysiwyg {
+    display: block;
+    color: black;
+    background: none transparent;
+    border: 1px solid $wysiwyg-border-color;
+    border-radius: $wysiwyg-border-radius;
+    transition: border $wysiwyg-duration;
+
+    /* active: change border */
+    &:focus-within,
+    &.focus {
+        border-color: $wysiwyg-highlight-back;
+    }
+
+    /* contenteditable + textarea */
+    > [contenteditable=true],
+    > .contenteditable {
+        display: block;
+        outline: none;
+        word-wrap: break-word;
+        padding: $wysiwyg-padding-vert $wysiwyg-padding-horiz;
+        overflow: hidden;
+    }
+
+    > textarea {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 1.15rem;
+        margin: $wysiwyg-padding-vert $wysiwyg-padding-horiz;
+        padding: 0;
+        border: none;
+        background: transparent none;
+        -webkit-appearance: none;
+        overflow: auto;
+        outline: none;
+        box-shadow: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        transition: height ($wysiwyg-duration + $wysiwyg-delay);
+
+        &:focus {
+            height: 5rem;
+        }
+    }
+
+    > [contenteditable=true] ~ textarea {
+        display: none !important;
+    }
+
+    /* placeholder - ':placeholder-shown' only works with input/textarea */
+    > [contenteditable=true]:empty:before,
+    > .contenteditable:empty:before {
+        content: '\200B'; /* Keep distance */
+        display: block; /* For Firefox */
+        opacity: .54;   /* https://developer.mozilla.org/de/docs/Web/CSS/%3A%3A-moz-placeholder */
+        white-space: nowrap;
+        cursor: text;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    > [contenteditable=true][data-placeholder]:empty:before,
+    > .contenteditable[data-placeholder]:empty:before {
+        content: '\200B' attr(data-placeholder); /* ZWSP if placeholder empty, IE11 puts caret after placeholder */
+    }
+}
+/* popup - can be placed anywhere in the DOM */
+.wysiwyg-popup {
+    position: absolute;
+    z-index: 9999;
+    color: black;
+    background: white;
+    background: rgba(white,.9);
+    left: -50%;
+    border: 1px solid $wysiwyg-border-color;
+    border-radius: $wysiwyg-border-radius;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &.animate-down {
+        transform-origin: top;
+        animation: transformer $wysiwyg-duration ease-out 0s 1;
+    }
+    &.animate-up {
+        transform-origin: bottom;
+        animation: transformer $wysiwyg-duration ease-out 0s 1;
+    }
+
+    &.hyperlink {
+        width: 25rem;
+        max-width: 90vw;
+
+        > input {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            margin: 0;
+            padding: $wysiwyg-padding-vert $wysiwyg-padding-horiz;
+            border: none;
+            background: transparent none;
+            -webkit-appearance: none;
+            box-shadow: none;
+            font-family: inherit;
+        }
+    }
+    &.palette {
+        td {
+            width: 0.5rem;
+            height: 0.5rem;
+            cursor: pointer;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    }
+
+    .suggestion {
+        display: block;
+        padding: $wysiwyg-padding-vert $wysiwyg-padding-horiz;
+        cursor: pointer;
+
+        &:hover,
+        &:first-of-type {
+            color: $wysiwyg-highlight-color;
+            background-color: $wysiwyg-highlight-back;
+        }
+    }
+}
+@keyframes transformer {
+    from {
+        opacity: 0;
+        transform: scale(.5, 0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+/* toolbar */
+.wysiwyg .toolbar,
+.wysiwyg-popup .toolbar {
+    white-space: nowrap;
+
+    * {
+        vertical-align: middle;
+    }
+}
+.wysiwyg {
+    > .toolbar-top {
+        border-bottom: 1px solid $wysiwyg-border-color;
+    }
+    > .toolbar-bottom {
+        border-top: 1px solid $wysiwyg-border-color;
+    }
+    /* https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css */
+    > .toolbar-auto {
+        display: flex;
+        overflow: hidden;
+
+        &:after {
+            content: '';
+            height: 1rem;
+            max-height: 0;
+            transition: height $wysiwyg-duration, max-height 0s $wysiwyg-duration;
+        }
+
+        > .toolbar {
+            width: 100%;
+            max-height: 1000000px;
+            margin-bottom: 0;
+            border-top: 1px solid $wysiwyg-border-color;
+            transition: margin-bottom $wysiwyg-duration cubic-bezier(0, 0, 0, 1), border-top-width $wysiwyg-duration;
+        }
+    }
+    &:not(:focus-within):not(.focus):not(.focused) > [contenteditable="true"]:not(:focus) ~ .toolbar-auto {
+        &:after {
+            height: 0;
+            max-height: 1rem;
+            transition: height $wysiwyg-duration;
+            transition-delay: $wysiwyg-delay;
+        }
+        > .toolbar {
+            max-height: 0;
+            margin-bottom: -2000px;
+            border-top-width: 0;
+            transition: margin-bottom $wysiwyg-duration cubic-bezier(1, 0, 1, 1), max-height 0s $wysiwyg-duration, border-top-width $wysiwyg-duration;
+            transition-delay: $wysiwyg-delay;
+        }
+    }
+}
+/* IE10+IE11: repeat due :focus-within */
+_:-ms-lang(x), .wysiwyg:not(.focus):not(.focused) > [contenteditable="true"]:not(:focus) ~ .toolbar-auto:after {
+    height: 0;
+    max-height: 1rem;
+    transition: height $wysiwyg-duration;
+    transition-delay: $wysiwyg-delay;
+}
+_:-ms-lang(x), .wysiwyg:not(.focus):not(.focused) > [contenteditable="true"]:not(:focus) ~ .toolbar-auto > .toolbar {
+    max-height: 0;
+    margin-bottom: -2000px;
+    border-top-width: 0;
+    transition: margin-bottom $wysiwyg-duration cubic-bezier(1, 0, 1, 1), max-height 0s $wysiwyg-duration, border-top-width $wysiwyg-duration;
+    transition-delay: $wysiwyg-delay;
+}
+
+/* buttons */
+.wysiwyg .toolbar,
+.wysiwyg-popup .toolbar {
+    // display: flex
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    // flex-direction: row
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    // flex-wrap: nowrap
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: none;
+    flex-wrap: nowrap;
+    // justify-content: flex-start
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    // align-items: flex-start
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    // align-content: flex-start
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    
+    * {
+        display: block;
+        // flex-grow: 0
+        -ms-flex-positive: 0;
+        -webkit-box-flex: 0;
+        -moz-box-flex: 0;
+        -webkit-flex-grow: 0;
+        flex-grow: 0;
+        // flex-shrink: 1
+        -ms-flex-negative: 1;
+        -webkit-flex-shrink: 1;
+        -moz-flex-shrink: 1;
+        flex-shrink: 1;
+        // flex-basis: auto
+        -ms-flex-preferred-size: auto;
+        -webkit-flex-basis: auto;
+        flex-basis: auto;
+        // min-width: 0
+        min-width: 1px;
+    }
+
+    button.btn {
+        display: block;
+        width: $wysiwyg-padding-horiz + 1.2rem + $wysiwyg-padding-horiz;
+        height: 1.2rem;
+        margin: 0;
+        border: none;
+        padding: $wysiwyg-padding-vert 0;
+        color: $wysiwyg-toolbar-color;
+        background: transparent none;
+        text-decoration: none;
+        vertical-align: top;
+        cursor: pointer;
+        outline: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: color $wysiwyg-duration, background $wysiwyg-duration;
+        box-sizing: content-box;
+
+        &:hover {
+            color: $wysiwyg-highlight-color;
+            background-color: $wysiwyg-highlight-back;
+        }
+
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

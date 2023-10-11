@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers"],(function(t,n){"use strict";let e=function(t){this.first=t.from,this.count=t.to-t.from},o=function(t=0,n=0){this.from=t,this.to=n},r=function(t){function e(n,e,o,r,i,s){var u;return(u=t.call(this,e,o)||this).id=n,u.isVisible=r,u.hasHighlights=i,u.hasOccludees=s,u}return n._inheritsLoose(e,t),e}(o);function i(t){return Array.from(t.values()).sort(s)}function s(t,n){return t.from===n.from?t.to-n.to:t.from-n.from}function u(t,n){if(0===t.length)return void t.push(new e(n));const o=t[t.length-1];if(f(o,n)){const t=n.from-o.first+n.to-n.from;o.count=t}else t.push(new e(n))}function f(t,n){return t.first+t.count>=n.from}t.BufferRange=o,t.DrawCommand=e,t.Instance=r,t.addOrMerge=u,t.sortInstancesByRange=i,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

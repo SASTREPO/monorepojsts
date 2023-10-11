@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Logger","../../core/promiseUtils","../../core/reactiveUtils","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,r,s,o,t,a,i,c,l,n,u){"use strict";const p=e=>{let c=function(e){function s(){return e.apply(this,arguments)||this}return r._inheritsLoose(s,e),s.prototype.initialize=function(){this.handles.add(a.on((()=>this.layer),"refresh",(e=>{this.doRefresh(e.dataChanged).catch((e=>{t.isAbortError(e)||o.getLogger(this.declaredClass).error(e)}))})),"RefreshableLayerView")},s}(e);return s.__decorate([i.property()],c.prototype,"layer",void 0),c=s.__decorate([u.subclass("esri.layers.mixins.RefreshableLayerView")],c),c};e.RefreshableLayerView=p,e.default=p,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

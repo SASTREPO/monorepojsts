@@ -1,0 +1,6 @@
+{
+	file: 'dist/minified.js',
+	nextFile: '',
+	nextFileLegacy: ''
+}
+

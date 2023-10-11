@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../utils","./operations/pbfJSONFeatureSet","./operations/query","../support/FeatureSet","../support/Query"],(function(e,t,r,n,u,o,a){"use strict";function i(e,t,r){return s.apply(this,arguments)}function s(){return(s=t._asyncToGenerator((function*(e,t,r){const n=yield p(e,t,r);return o.fromJSON(n)}))).apply(this,arguments)}function p(e,t,r){return c.apply(this,arguments)}function c(){return(c=t._asyncToGenerator((function*(e,t,o){const i=r.parseUrl(e),s={...o},p=a.from(t),c=!p.quantizationParameters,{data:l}=yield u.executeQueryPBF(i,p,new n.JSONFeatureSetParserContext({sourceSpatialReference:p.sourceSpatialReference,applyTransform:c}),s);return l}))).apply(this,arguments)}e.executeQueryPBF=i,e.executeRawQueryPBF=p,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

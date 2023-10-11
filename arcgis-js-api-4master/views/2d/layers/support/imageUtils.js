@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";function t(e){return e instanceof HTMLImageElement?e.naturalWidth:e.width}function n(e){return e instanceof HTMLImageElement?e.naturalHeight:e.height}function o(e,o,r,u){if(r.level===u.level)return o;const a=e.tileInfo.size,i=e.getTileResolution(r.level),c=e.getTileResolution(u.level);let g=e.getLODInfoAt(u.level);const s=g.getXForColumn(u.col),d=g.getYForRow(u.row);g=e.getLODInfoAt(r.level);const f=g.getXForColumn(r.col),m=g.getYForRow(r.row),h=t(o)/a[0],v=n(o)/a[1],I=Math.round(h*((s-f)/i)),M=Math.round(v*(-(d-m)/i)),w=Math.round(h*a[0]*(c/i)),T=Math.round(v*a[1]*(c/i)),F=l(a);return F.getContext("2d").drawImage(o,I,M,w,T,0,0,a[0],a[1]),F}function l(e){const t=document.createElement("canvas");return[t.width,t.height]=e,t}e.createBlankImage=l,e.resampleImage=o,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

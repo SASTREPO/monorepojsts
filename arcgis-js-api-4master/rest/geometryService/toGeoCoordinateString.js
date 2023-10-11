@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils","./units"],(function(n,e,o,t,r){"use strict";function s(n,e,o){return i.apply(this,arguments)}function i(){return(i=e._asyncToGenerator((function*(n,e,s){const i={};null!=e.sr&&"object"==typeof e.sr?i.sr=e.sr.wkid||JSON.stringify(e.sr):i.sr=e.sr,i.coordinates=JSON.stringify(e.coordinates);const u=e.conversionType||"mgrs";i.conversionType=r.conversionTypeKebabDict.toJSON(u),i.conversionMode=e.conversionMode,i.numOfDigits=e.numOfDigits,i.rounding=e.rounding,i.addSpaces=e.addSpaces;const a=t.parseUrl(n),c={...a.query,f:"json",...i},d=t.asValidOptions(c,s);return o(a.path+"/toGeoCoordinateString",d).then((({data:n})=>n.strings))}))).apply(this,arguments)}n.toGeoCoordinateString=s,Object.defineProperties(n,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass"],(function(e,r,t,s,o,a,l,c){"use strict";const i=e=>{let o=function(e){function t(){return e.apply(this,arguments)||this}return r._inheritsLoose(t,e),r._createClass(t,[{key:"availableFields",get:function(){return this.layer.fieldsIndex.fields.map((e=>e.name))}}]),t}(e);return t.__decorate([s.property()],o.prototype,"layer",void 0),t.__decorate([s.property({readOnly:!0})],o.prototype,"availableFields",null),o=t.__decorate([c.subclass("esri.views.layers.OGCFeatureLayerView")],o),o};e.OGCFeatureLayerView=i,e.default=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

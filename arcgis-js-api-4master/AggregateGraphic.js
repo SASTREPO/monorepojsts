@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["./chunks/_rollupPluginBabelHelpers","./chunks/tslib.es6","./Graphic","./core/accessorSupport/decorators/property","./core/arrayUtils","./core/has","./core/accessorSupport/ensureType","./core/accessorSupport/decorators/subclass"],(function(e,r,t,o,p,s,c,u){"use strict";let a=function(r){function t(){var e;return(e=r.apply(this,arguments)||this).isAggregate=!0,e}e._inheritsLoose(t,r);var o=t.prototype;return o.getEffectivePopupTemplate=function(e=!1){if(this.popupTemplate)return this.popupTemplate;const r=this.sourceLayer&&this.sourceLayer.featureReduction;return r&&"popupTemplate"in r&&r.popupEnabled?r.popupTemplate:null},o.getObjectId=function(){return this.objectId},t}(t);r.__decorate([o.property({type:Boolean})],a.prototype,"isAggregate",void 0),r.__decorate([o.property({type:Number,json:{read:!0}})],a.prototype,"objectId",void 0),a=r.__decorate([u.subclass("esri.AggregateGraphic")],a);return a}));

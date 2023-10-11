@@ -1,0 +1,59 @@
+
+.links {
+	line-height: normal;
+}
+
+ul.links {
+	list-style-type: none;
+	margin: 0; 
+	padding: 0;
+}
+
+.links li {
+	margin: 0; 
+	padding: 0;
+}
+
+.links a {
+	display: block;
+	text-decoration: none;
+	margin: 0.3em;
+	padding: 0.5em;
+}
+
+.links li a {
+	width: 30em;
+	border-top: 1px solid black;
+}
+
+.links li:last-child a {
+	border-bottom: 1px solid black;
+}
+
+.links .summary {
+	font-size: 10pt;
+}
+
+.links .link {
+	font-size: 13pt;
+	text-decoration: underline;
+}
+
+.links {
+	border-collapse: collapse;
+}
+
+.links th {
+	padding: 0.2em 0.5em;
+}
+
+.links tr:not(:last-child) th, .links tr:not(:last-child) td {
+	border-bottom: 1px solid black;
+}
+.links tr th:not(:last-child), .links tr td:not(:last-child)  {
+	border-right: 1px solid black;
+}
+.smaller {
+	font-size: smaller; 
+	font-weight: normal;
+}

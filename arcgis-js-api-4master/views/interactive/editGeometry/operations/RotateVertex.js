@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/arrayUtils","../../../../chunks/vec2","./UpdateVertices"],(function(t,e,n,i){"use strict";let a=function(){function t(t,e,n=i.AccumulationType.CUMULATIVE){this.origin=t,this.angle=e,this.accumulationType=n}var a=t.prototype;return a._rotate=function(t,e){n.rotate(t.pos,t.pos,this.origin,e)},a.apply=function(t){this._rotate(t,this.angle)},a.undo=function(t){this._rotate(t,-this.angle)},a.canAccumulate=function(n){return n instanceof t&&e.equals(this.origin,n.origin)},a.accumulate=function(t,e){const n=e.accumulationType===i.AccumulationType.REPLACE;this._rotate(t,n?e.angle-this.angle:e.angle)},a.accumulateParams=function(t){const e=t.accumulationType===i.AccumulationType.REPLACE;this.angle=e?t.angle:this.angle+t.angle},t}();t.RotateVertex=a,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

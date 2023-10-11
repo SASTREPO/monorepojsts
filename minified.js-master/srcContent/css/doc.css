@@ -1,0 +1,35 @@
+
+.syntax {
+	font-family: monospace;
+}
+
+span.var {
+	font-style: italic;
+}
+
+h3, h2 {
+	margin-top: 2.5em;
+	margin-bottom: 0.5em;
+}
+
+p { margin-bottom: 0.1em; }
+
+li { margin-top: 0.5em; }
+
+table {
+	border-collapse: collapse;
+	border: 2px solid black;
+}
+
+th, td {
+	padding: 4px;
+}
+
+th {
+	background-color: #eee;
+	border: 2px solid black;
+}
+
+td {
+	border: 1px solid black;
+}

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../../geometry","../../../geometry/Point","../../../geometry/SpatialReference"],(function(e,t,n,i){"use strict";function r(e,t){const n=o(t);return[e[0].toFixed(n),e[1].toFixed(n)]}function o(e){return e>=500?6:e<500&&e>=50?7:e<50&&e>=5?8:9}function u(e,t){const r=e.indexOf(",")>=0?",":" ",[o,u,c]=e.split(r).map((e=>{const t=e.trim();return t?Number(t):null}));if(!s(o)||!s(u))return null;const f=new n({x:o,y:u,spatialReference:t||i.WGS84});return c&&(f.z=c,f.hasZ=!0),f}function s(e){return"number"==typeof e&&isFinite(e)}function c(e){return e&&s(e.x)&&s(e.y)}function f(e,t){if(e.spatialReference.isGeographic&&t){const[n,i]=r([e.x,e.y],t);return`${n}, ${i}`}return`${e.x.toFixed(3)}, ${e.y.toFixed(3)}`}function d(e){return"dd"===e||"dms"===e||"ddm"===e||"mgrs"===e||"usng"===e||"utm"===e}e.clipLonLat=r,e.fromXY=u,e.getDegreePrecision=o,e.isSupportedNotation=d,e.isValidPoint=c,e.pointToCoordinate=f,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

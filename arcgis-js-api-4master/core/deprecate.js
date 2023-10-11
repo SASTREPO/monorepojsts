@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","./has"],(function(e,n){"use strict";const t=new Set;function o(e,n,o=!1){o&&t.has(n)||(o&&t.add(n),e.warn(`🛑 DEPRECATED - ${n}`))}function r(e,t,o={}){n("esri-deprecation-warnings")&&c(e,`Module: ${t}`,o)}function i(e,t,o={}){if(n("esri-deprecation-warnings")){const{moduleName:n}=o;c(e,`Function: ${(n?n+"::":"")+t+"()"}`,o)}}function a(e,t,o={}){if(n("esri-deprecation-warnings")){const{moduleName:n}=o;c(e,`Property: ${(n?n+"::":"")+t}`,o)}}function c(e,t,r={}){if(n("esri-deprecation-warnings")){const{replacement:n,version:i,see:a,warnOnce:c}=r;let d=t;n&&(d+=`\n\t🛠️ Replacement: ${n}`),i&&(d+=`\n\t⚙️ Version: ${i}`),a&&(d+=`\n\t🔗 See ${a} for more details.`),o(e,d,c)}}e.deprecated=c,e.deprecatedFunction=i,e.deprecatedModule=r,e.deprecatedProperty=a,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.23/esri/copyright.txt for details.
+*/
+define(["exports","../../core/maybe"],(function(t,e){"use strict";let a=function(){function t(t,a=null){if(this.tile=t,e.isSome(a)){const e=t.extent;this.samplerData={pixelData:a.values,width:a.width,height:a.height,safeWidth:.99999999*(a.width-1),noDataValue:a.noDataValue,dx:(a.width-1)/(e[2]-e[0]),dy:(a.width-1)/(e[3]-e[1]),x0:e[0],y1:e[3]}}}return t.prototype.sample=function(t,a){if(e.isNone(this.samplerData))return;const{safeWidth:n,width:o,pixelData:l,noDataValue:s,dx:r,dy:u,y1:h,x0:d}=this.samplerData,f=i(u*(h-a),0,n),c=i(r*(t-d),0,n),p=Math.floor(f),x=Math.floor(c),D=p*o+x,m=D+o,y=l[D],w=l[m],g=l[D+1],v=l[m+1];if(y!==s&&w!==s&&g!==s&&v!==s){const t=c-x,e=y+(g-y)*t;return e+(w+(v-w)*t-e)*(f-p)}},t}();function i(t,e,a){return t<e?e:t>a?a:t}t.ElevationTile=a,t.default=a,Object.defineProperties(t,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})}));

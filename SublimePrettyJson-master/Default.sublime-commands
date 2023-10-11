@@ -1,0 +1,39 @@
+[
+    {
+        "caption": "Pretty JSON: Format JSON",
+        "command": "pretty_json"
+    },
+    {
+        "caption": "Pretty JSON: Format JSON Lines",
+        "command": "pretty_json_lines"
+    },
+    {
+        "caption": "Pretty JSON: Format and Sort JSON",
+        "command": "pretty_json_and_sort"
+    },
+    {
+        "caption": "Pretty JSON: Minify JSON",
+        "command": "un_pretty_json"
+    },
+    {
+        "caption": "Pretty JSON: json2xml",
+        "command": "json_to_xml"
+    },
+    {
+        "caption": "Pretty JSON: JSON query with ./jq",
+        "command": "jq_query_pretty_json"
+    },
+    {
+        "caption": "Pretty JSON: Validate",
+        "command": "pretty_json_validate"
+    },
+    {
+        "args":
+        {
+            "base_file": "${packages}/Pretty JSON/Pretty JSON.sublime-settings",
+            "default": "{\n\t$0\n}\n"
+        },
+        "caption": "Preferences: Pretty JSON Settings",
+        "command": "edit_settings"
+    }
+]
